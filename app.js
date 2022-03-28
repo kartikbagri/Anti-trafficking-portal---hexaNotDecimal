@@ -6,6 +6,9 @@ const passport = require('passport');
 const User = require('./models/userSchema');
 const middleware = require('./middleware');
 
+// Python
+const spawn = require("child_process").spawn;
+
 const app = express();
 app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
@@ -69,6 +72,13 @@ app.get('/missing', middleware.isLoggedIn, (req, res) => {
 app.get('/facescan', middleware.isLoggedIn, (req, res) => {
     const payload = {facescan: true};
     res.render('faceScan', payload);
+})
+
+app.post('/facescan', (req, res) => {
+    const pythonProcess = spawn('python',["./face_detection/script.py", '', '']);
+    pythonProcess.stdout.on('data', (data) => {
+        console.log(data);
+    });
 })
 
 app.listen(3000, () => {
