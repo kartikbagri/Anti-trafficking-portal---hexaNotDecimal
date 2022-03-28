@@ -23,5 +23,5 @@ for folder in all_folder:
     if(flag==1):
         break
 
-print(result)
+print(result['verified'])
 sys.exit()
