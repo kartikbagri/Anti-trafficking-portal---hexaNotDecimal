@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/missing-report.css">
+    <title>Portal | Missing Report</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <div class="form-container">
+        <form class="missing-report-form" action="/missing" method="POST">
+            <div class="form-container__main-form">
+                <fieldset>
+                    <legend class="form-group-title">Missing Person</legend>
+                    <div class="form-group">
+                        <label class="form-label" for="missingPersonName">Full Name</label>
+                        <input type="text" class="form-control" id="missingPersonName" name="missingPersonName">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="gender">Gender</label>
+                        <select class="form-control" id="gender" name="gender">
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                            <option value="O">Others</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="age">Age at disappearance</label>
+                        <input type="number" min="1" value="1" class="form-control" id="age" name="age">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="recentImages">Recent Images</label>
+                        <input type="file" class="form-control" id="recentImages" name="recentImages" multiple>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="aadhaarNumber">Aadhaar Number</label>
+                        <input type="text" class="form-control" id="aadhaarNumber" name="aadhaarNumber">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend class="form-group-title">Complainant</legend>
+                    <div class="form-group">
+                        <label class="form-label" for="reporterName">Full Name</label>
+                        <input type="text" class="form-control" id="reporterName" name="reporterName">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="reporterPhoneNumber">Phone Number</label>
+                        <input type="tel" class="form-control" id="reporterPhoneNumber" name="reporterPhoneNumber">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="reporterAadhaarNumber">Aadhaar Number</label>
+                        <input type="text" class="form-control" id="reporterAadhaarNumber" name="reporterAadhaarNumber">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="reporterAddress">Address</label>
+                        <textarea rows="5" class="form-control" id="reporterAddress" name="reporterAddress"></textarea>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="form-group fir-upload">
+                <label class="form-label" for="fir">Upload FIR</label>
+                <input type="file" class="form-control" id="fir" name="fir">
+            </div>
+            <button type="submit" class="file-report-btn">File Report</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap');
+
+
+.form-container {
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    /* position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%); */
+    background-color: rgb(249,249,249);
+    border: 1px solid rgb(240,240,240);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.form-control {
+    padding: 5px;
+    font-size: 1rem;
+    background-color: rgb(245,245,245);
+    border: 1px solid rgb(212, 212, 212);
+    outline: none;
+    border-radius: 2px;
+}
+
+.form-control:focus-visible {
+    border: 1px solid rgb(0, 118, 169);
+}
+
+.form-label {
+    font-size: 1.1rem;
+    padding-bottom: 5px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.recaptcha-input {
+    margin: 15px 0;
+}
+
+.login-btn {
+    font-size: 1rem;
+    padding: 10px 5px;
+    background-color: rgb(0, 118, 169);
+    color: white;
+    font-weight: 400;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.required-field { 
+    color: red;
+    font-size: 0.8rem;
+}
+

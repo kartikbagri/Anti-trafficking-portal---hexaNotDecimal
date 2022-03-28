@@ -1,0 +1,64 @@
+.missing-report-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container__main-form {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+fieldset {
+    width: 35%;
+    padding: 20px;
+}
+
+.form-group-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Open Sans';
+    color: rgb(0, 118, 169);
+}
+
+.file-report-btn {
+    outline: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin: 30px;
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    width: 40%;
+    background-color: rgb(0, 118, 169);
+}
+
+.fir-upload {
+    box-sizing: border-box;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    background-color: rgb(249,249,249);
+    font-size: 1.2rem;
+    border-radius: 2px;
+    padding: 10px 40px;
+    border: 1px solid rgb(209, 209, 209);
+    width: 40%;
+    font-weight: 600;
+}
+
+#fir {
+    background-color: rgb(249,249,249);
+}
+
+textarea {
+    font-family: 'Open Sans';
+}

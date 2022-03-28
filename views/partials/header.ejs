@@ -1,0 +1,51 @@
+<header class="site-header">
+    <div class="site-header-top">
+        <div class="site-header-top__left-container">
+            <a class="site-header__external-links" href="">
+                <div class="site-header__external-links-text">भारत सरकार</div>
+                <div class="site-header__external-links-text">Government of India</div>
+            </a>
+        </div>
+        <div class="site-header-top__right-container">
+            <a class="site-header__language-change" href="">English</a>
+            <a class="site-header__language-change" href="">हिन्दी</a>
+        </div>
+    </div>
+    <div class="site-header-bottom">
+        <div class="site-header-bottom__left-container">
+            <div class="portal-logo-container">
+                <img class="portal-logo" src="images/portal-logo.png" alt="portal logo">
+            </div>
+            <div class="portal-name-container">
+                <h1 class="portal-name portal-name-bold">मध्य प्रदेश पुलिस</h1>
+                <h1 class="portal-name">Madhya Pradesh Police</h1>
+            </div>
+        </div>
+        <div class="site-header-bottom__right-container">
+            <div class="emblem-container">
+                <img class="emblem-logo" src="images/emblem.png" alt="Satyamev Jayate">
+            </div>
+        </div>
+    </div>
+</header>
+<nav class="navbar">
+    <ul class="navbar-items-list">
+        <li class="navbar-item">
+            <a class="navbar-item-link" href="/">Home</a>
+        </li>
+        <li class="navbar-item">
+            <a class="navbar-item-link" href="">About Us</a>
+        </li>
+        <li class="navbar-item">
+            <a class="navbar-item-link <%=locals.missing && 'nav-item-active'%>" href="/missing">Missing Report</a>
+        </li>
+        <li class="navbar-item">
+            <a class="navbar-item-link <%=locals.facescan && 'nav-item-active'%>" href="/facescan">Face Scan</a>
+        </li>
+        <%if(locals.login) {%>
+        <li class="navbar-item">
+            <a class="navbar-item-link <%=locals.login && 'nav-item-active'%>" href="/login">Login</a>
+        </li>
+        <%}%>
+    </ul>
+</nav>

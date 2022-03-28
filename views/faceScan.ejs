@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal | Face Scan</title>
+    <link rel="stylesheet" href="css/face-scan.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+    <form class="contentarea">
+        <h1 class="face-scan-title">
+            Face Scan
+        </h1>
+        <div class="scan-container">
+            <div class="scan-container__video">
+                <div class="camera">
+                    <video id="video">Video stream not available.</video>
+                </div>
+                <div><button id="startbutton">Take photo</button></div>
+                <p>Camera</p>
+            </div>
+            <canvas id="canvas"></canvas>
+            <div class="output">
+                <img id="photo" alt="The screen capture will appear in this box.">
+                <p>Final Photograph</p>
+          </div>
+        </div>
+        <button class="scan-submit" id="submit">Submit for scan</button>
+    </form>
+    <script src="javascript/faceScan.js"></script>
+</body>
+</html>
