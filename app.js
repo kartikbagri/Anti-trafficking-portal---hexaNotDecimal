@@ -57,7 +57,7 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', passport.authenticate('local', {failureRedirect: '/login'}), (req, res) => {
-    res.redirect('/');
+    res.redirect('/missing');
 });
 
 app.get('/', (req, res) => {
@@ -75,9 +75,9 @@ app.get('/facescan', middleware.isLoggedIn, (req, res) => {
 })
 
 app.post('/facescan', (req, res) => {
-    const pythonProcess = spawn('python',["./face_detection/script.py", '', '']);
+    const pythonProcess = spawn('python',["./face_detection/script.py", "./face_detection/k1.webp", "./face_detection/k2.jpeg"]);
     pythonProcess.stdout.on('data', (data) => {
-        console.log(data);
+        res.send(data);
     });
 })
 
