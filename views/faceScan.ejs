@@ -20,7 +20,7 @@
                 <div class="camera">
                     <video id="video">Video stream not available.</video>
                 </div>
-                <div><button id="startbutton">Take photo</button></div>
+                <div><button id="startbutton">Take and scan photo</button></div>
                 <p>Camera</p>
             </div>
             <canvas id="canvas"></canvas>
@@ -30,7 +30,12 @@
           </div>
         </div>
     </form>
-    <div id="result"></div>
+    <div id="loader">
+        <object data="images/loader.svg" width="90" height="90"></object>
+    </div>
+    <div id="result">
+        <h1 id="resultText"></h1>
+    </div>
     <script src="javascript/faceScan.js"></script>
 </body>
 </html>

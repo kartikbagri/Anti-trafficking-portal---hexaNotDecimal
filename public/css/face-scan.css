@@ -73,3 +73,44 @@
     border: none;
     cursor: pointer;
 }
+
+#result {
+    opacity: 0;
+    transform: translateY(-100px);
+    display: flex;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-family: 'Open Sans';
+}
+
+#result.available {
+    opacity: 100%;
+    transform: translateY(0);
+    transition: all 1s;
+}
+
+#resultText {
+    border-radius: 40px;
+    padding: 10px 30px;
+    display: flex;
+    font-weight: 600;
+}
+
+#resultText.success {
+    background-color: rgb(34, 255, 0);
+    color: green;
+    border: 2px solid green;
+}
+
+#resultText.failure {
+    background-color: rgb(255, 127, 125);
+    color: red;
+    border: 2px solid red;
+}
+
+#loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}

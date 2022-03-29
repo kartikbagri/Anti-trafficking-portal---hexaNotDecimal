@@ -45,17 +45,26 @@
         }, false);
 
         startbutton.addEventListener('click', function(ev) {
+            document.getElementById('result').classList.remove('available');
             takepicture();
             canvas.toBlob(async function(blob) {
                 const formData = new FormData();
                 formData.append('inputImg', blob);
+                document.getElementById('loader').style.display='flex';
+                // document.getElementById('loader').style.display='flex';
                 const result = await axios.post('/facescan', formData);
                 console.log(result.data);
                 if(result.data.verified) {
-                    document.getElementById('result').innerHTML = '<h1>Match Found</h1>';
+                    document.getElementById('result').classList.add('available');
+                    document.getElementById('resultText').innerHTML = 'Match Found';
+                    document.getElementById('resultText').classList.add('success');
+                    
                 } else {
-                    document.getElementById('result').innerHTML = '<h1>Match Not Found</h1>';
+                    document.getElementById('result').classList.add('available');
+                    document.getElementById('resultText').innerHTML = 'Match Not Found';
+                    document.getElementById('resultText').classList.add('failure');
                 }
+                document.getElementById('loader').style.display='none';
             });
             ev.preventDefault();
         }, false);
