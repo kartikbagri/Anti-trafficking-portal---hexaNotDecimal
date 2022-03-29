@@ -57,11 +57,13 @@
                 if(result.data.verified) {
                     document.getElementById('result').classList.add('available');
                     document.getElementById('resultText').innerHTML = 'Match Found';
+                    document.getElementById('resultText').classList.remove('failure');
                     document.getElementById('resultText').classList.add('success');
                     
                 } else {
                     document.getElementById('result').classList.add('available');
                     document.getElementById('resultText').innerHTML = 'Match Not Found';
+                    document.getElementById('resultText').classList.remove('success');
                     document.getElementById('resultText').classList.add('failure');
                 }
                 document.getElementById('loader').style.display='none';

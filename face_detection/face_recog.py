@@ -17,6 +17,8 @@ try:
             result = DeepFace.verify(img1_path, f'./face_detection/image_set/{folder}/{file}', model_name = model_name)
             if(result['verified']==True):
                 flag = 1
+                str = f'{folder}'
+                result['folder_name'] = str
                 break
         if(flag==1):
             break
