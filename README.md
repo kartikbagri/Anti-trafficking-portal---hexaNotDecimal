@@ -1,6 +1,8 @@
 # Anti-trafficking Portal
 # hexaNotDecimal
 
+<img src="demo.gif">
+
 ## Idea Presentation
 https://docs.google.com/presentation/d/1wYKTuHMyouCAgfZArerYZYJSQOIZjZ5f/edit?usp=sharing&ouid=108181928669678277228&rtpof=true&sd=true
 
