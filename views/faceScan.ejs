@@ -7,10 +7,11 @@
     <title>Portal | Face Scan</title>
     <link rel="stylesheet" href="css/face-scan.css">
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <%- include('partials/header') %>
-    <form class="contentarea">
+    <form class="contentarea" method="POST" enctype="multipart/form-data">
         <h1 class="face-scan-title">
             Face Scan
         </h1>
@@ -28,8 +29,8 @@
                 <p>Final Photograph</p>
           </div>
         </div>
-        <button class="scan-submit" id="submit">Submit for scan</button>
     </form>
+    <div id="result"></div>
     <script src="javascript/faceScan.js"></script>
 </body>
 </html>

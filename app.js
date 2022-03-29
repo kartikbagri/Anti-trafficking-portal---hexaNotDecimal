@@ -5,6 +5,11 @@ const session = require('express-session');
 const passport = require('passport');
 const User = require('./models/userSchema');
 const middleware = require('./middleware');
+const multer  = require('multer')
+const upload = multer({ dest: 'face_detection/image_set/' })
+const uploadInput = multer({ dest: 'face_detection/input_image/' })
+const fs = require('fs');
+const path = require('path');
 
 // Python
 const spawn = require("child_process").spawn;
@@ -64,20 +69,53 @@ app.get('/', (req, res) => {
     res.render('home');
 })
 
-app.get('/missing', middleware.isLoggedIn, (req, res) => {
+app.get('/missing', (req, res) => {
     const payload = {missing: true};
     res.render('missingReport', payload);
 });
 
-app.get('/facescan', middleware.isLoggedIn, (req, res) => {
+app.post('/missing', upload.array('recentImages'), (req, res) => {
+    for(let i = 0; i < req.files.length; i++) {
+        const filePath = req.files[i].originalname;
+        const tempPath = req.files[i].path;
+        try {
+            if (!fs.existsSync('./face_detection/image_set/vikas')) {
+                fs.mkdirSync('./face_detection/image_set/vikas');
+            }
+        } catch(err) {
+            console.log(err);
+            res.sendStatus(400);
+        }
+        const targetPath = path.join(__dirname, `./face_detection/image_set/vikas/${filePath}`);
+        fs.rename(tempPath, targetPath, function(err) {
+            if(err){
+                console.log(err);
+                return res.sendStatus(400);
+            }
+        });
+    }
+    res.redirect('/');
+})
+
+app.get('/facescan', (req, res) => {
     const payload = {facescan: true};
     res.render('faceScan', payload);
 })
 
-app.post('/facescan', (req, res) => {
-    const pythonProcess = spawn('python',["./face_detection/script.py", "./face_detection/k1.webp", "./face_detection/k2.jpeg"]);
+app.post('/facescan', uploadInput.single('inputImg') , (req, res) => {
+    const filePath = req.file.filename;
+    const tempPath = req.file.path;
+    const targetPath = path.join(__dirname, `./face_detection/input_image/${filePath}.png`);
+    fs.rename(tempPath, targetPath, function(err) {
+        if(err){
+            console.log(err);
+            return res.sendStatus(400);
+        }
+    });
+    const pythonProcess = spawn('python', ["./face_detection/face_recog.py", `./face_detection/input_image/${filePath}.png`]);
     pythonProcess.stdout.on('data', (data) => {
-        res.send(data);
+        const result = JSON.parse(data);
+        res.send(result);
     });
 })
 

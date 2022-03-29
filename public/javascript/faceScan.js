@@ -46,6 +46,17 @@
 
         startbutton.addEventListener('click', function(ev) {
             takepicture();
+            canvas.toBlob(async function(blob) {
+                const formData = new FormData();
+                formData.append('inputImg', blob);
+                const result = await axios.post('/facescan', formData);
+                console.log(result.data);
+                if(result.data.verified) {
+                    document.getElementById('result').innerHTML = '<h1>Match Found</h1>';
+                } else {
+                    document.getElementById('result').innerHTML = '<h1>Match Not Found</h1>';
+                }
+            });
             ev.preventDefault();
         }, false);
 
@@ -78,3 +89,5 @@
 
     window.addEventListener('load', startup, false);
 })();
+
+const startbutton = document.getElementById('startbutton');
