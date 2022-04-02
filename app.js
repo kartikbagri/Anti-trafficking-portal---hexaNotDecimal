@@ -84,7 +84,6 @@ app.post('/missing', upload.array('recentImages'), async (req, res) => {
     const newReport = new Report(data);
     try {
         const response = await newReport.save();
-        console.log(response);
         for(let i = 0; i < req.files.length; i++) {
             const filePath = req.files[i].originalname;
             const tempPath = req.files[i].path;
