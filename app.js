@@ -67,14 +67,18 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', passport.authenticate('local', {failureRedirect: '/login'}), (req, res) => {
-    res.redirect('/missing');
+    res.redirect('/');
 });
 
-app.get('/', (req, res) => {
+app.get('/', middleware.isLoggedIn, (req, res) => {
     res.render('home');
 })
 
-app.get('/missing', (req, res) => {
+app.get('/about', (req, res) => {
+    res.render('aboutUs');
+})
+
+app.get('/missing', middleware.isLoggedIn, (req, res) => {
     const payload = {missing: true};
     res.render('missingReport', payload);
 });
@@ -110,7 +114,7 @@ app.post('/missing', upload.array('recentImages'), async (req, res) => {
     res.redirect('/');
 })
 
-app.get('/facescan', (req, res) => {
+app.get('/facescan', middleware.isLoggedIn, (req, res) => {
     const payload = {facescan: true};
     res.render('faceScan', payload);
 })
