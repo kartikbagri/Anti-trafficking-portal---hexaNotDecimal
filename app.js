@@ -11,6 +11,7 @@ const upload = multer({ dest: 'face_detection/image_set/' })
 const uploadInput = multer({ dest: 'face_detection/input_image/' })
 const fs = require('fs');
 const path = require('path');
+const browser = require('browser-detect');
 
 // Facial Recognition
 // const canvas = require('canvas');
@@ -115,8 +116,13 @@ app.post('/missing', upload.array('recentImages'), async (req, res) => {
 })
 
 app.get('/facescan', middleware.isLoggedIn, (req, res) => {
+    const isMobile = browser(req.headers['user-agent']).mobile;
     const payload = {facescan: true};
-    res.render('faceScan', payload);
+    if(isMobile) {
+        res.render('mobileFaceScan');
+    } else {
+        res.render('faceScan', payload);
+    }
 })
 
 app.post('/facescan', uploadInput.single('inputImg') , async (req, res) => {
