@@ -18,7 +18,7 @@ try:
             if(result['verified']==True):
                 flag = 1
                 str = f'{folder}'
-                result['folder_name'] = str
+                result['reportId'] = str
                 break
         if(flag==1):
             break

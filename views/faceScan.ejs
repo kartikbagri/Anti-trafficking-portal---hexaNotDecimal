@@ -11,6 +11,29 @@
 </head>
 <body>
     <%- include('partials/header') %>
+    <div id="overlay" class="overlay"></div>
+    <div id="missingModal">
+        <div class="missing-modal-content">
+            <ul>
+                <li>
+                    <h3>Name: </h3>
+                    <span id="modalMissingPersonName">
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <h3>Age: </h3>
+                    <span id="modalMissingPersonAge">
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <h3>Gender: </h3>
+                    <span id="modalMissingPersonGender">
+                </li>
+            </ul>
+        </div>
+    </div>
     <form class="contentarea" method="POST" enctype="multipart/form-data">
         <h1 class="face-scan-title">
             Face Scan
@@ -35,7 +58,9 @@
     </div>
     <div id="result">
         <h1 id="resultText"></h1>
+        <btn id="missingReportShowBtn">Show Missing Report</btn>
     </div>
+
     <script src="javascript/faceScan.js"></script>
 </body>
 </html>

@@ -78,9 +78,11 @@
     opacity: 0;
     transform: translateY(-100px);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     font-size: 0.7rem;
     font-family: 'Open Sans';
+    align-items: center;
 }
 
 #result.available {
@@ -113,4 +115,44 @@
     align-items: center;
     justify-content: center;
     display: none;
+}
+
+#missingReportShowBtn {
+    display: none;
+    font-size: 1.2rem;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: rgb(201, 201, 201);
+    border: 2px solid black;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    backdrop-filter: blur(5px);
+    width: 100vw;
+    height: 100vh;
+}
+
+#missingModal {
+    display: none;
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    width: 65vw;
+    background-color: #fff;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
 }

@@ -127,8 +127,11 @@ app.post('/facescan', uploadInput.single('inputImg') , async (req, res) => {
         }
     });
     const pythonProcess = spawn('python', ["./face_detection/face_recog.py", `./face_detection/input_image/${filePath}.png`]);
-    pythonProcess.stdout.on('data', (data) => {
+    pythonProcess.stdout.on('data', async (data) => {
         const result = JSON.parse(data);
+        if(result.verified) {
+            result.report = await Report.findById(result.reportId);
+        }
         res.send(result);
     });
     // await faceapi.nets.ssdMobilenetv1.loadFromDisk('./weights')

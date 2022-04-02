@@ -53,13 +53,15 @@
                 document.getElementById('loader').style.display='flex';
                 // document.getElementById('loader').style.display='flex';
                 const result = await axios.post('/facescan', formData);
-                console.log(result.data);
                 if(result.data.verified) {
                     document.getElementById('result').classList.add('available');
                     document.getElementById('resultText').innerHTML = 'Match Found';
                     document.getElementById('resultText').classList.remove('failure');
                     document.getElementById('resultText').classList.add('success');
-                    
+                    document.getElementById('missingReportShowBtn').style.display = 'flex';
+                    document.getElementById('missingReportShowBtn').addEventListener('click', () => {
+                        showMissingReport(result.data.report);
+                    })
                 } else {
                     document.getElementById('result').classList.add('available');
                     document.getElementById('resultText').innerHTML = 'Match Not Found';
@@ -74,6 +76,15 @@
         clearphoto();
     }
 
+    function showMissingReport(report) {
+        console.log(report);
+        document.getElementById('overlay').style.display = 'flex';
+        document.getElementById('modalMissingPersonName').innerHTML = report.missingPersonName;
+        document.getElementById('modalMissingPersonAge').innerHTML = report.age;
+        document.getElementById('modalMissingPersonGender').innerHTML = report.gender[0];
+        document.getElementById('missingModal').style.display = 'flex';
+
+    }
 
     function clearphoto() {
         var context = canvas.getContext('2d');
@@ -100,5 +111,3 @@
 
     window.addEventListener('load', startup, false);
 })();
-
-const startbutton = document.getElementById('startbutton');
