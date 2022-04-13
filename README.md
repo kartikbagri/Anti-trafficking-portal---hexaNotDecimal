@@ -12,3 +12,7 @@ https://docs.google.com/document/d/1VIZeQo3_AaeNzsiFyfqW8YPRIhINQXruUd0lrTsmfh8/
 
 ## SIH Presentation
 https://docs.google.com/presentation/d/1Lbl-7qXRS3UVSU9qL533iH6vzMDVxcoS/edit?usp=sharing&ouid=108181928669678277228&rtpof=true&sd=true
+
+Use the command ```npm i``` to install the dependencies.
+
+Use the command ```node app.js``` to run the application.
